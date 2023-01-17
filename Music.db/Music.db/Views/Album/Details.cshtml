@@ -1,0 +1,131 @@
+﻿@model Music.db.ViewModels.AlbumDetailsViewModel
+
+@{
+    ViewData["Title"] = "Album Details";
+}
+
+<!-- Selected Album Details -->
+<div class="row m-3 pt-5">
+    <!-- Album Cover -->
+    @*<div class="col-md-3 mb-2">
+            Cover hier
+            <img src="@Url.Content("~/img/" + (Model.AlbumArtist.Replace(" ","_") + "-" + Model.AlbumTitle.Replace(" ","_")).ToLower() + ".jpg")" alt="" style="width: 100%;">
+        </div>*@
+    <!-- Album Details -->
+    <div class="col-md-8">
+        <h3>@Model.AlbumTitle - @Model.ArtistName</h3>
+        <form class="row py-1">
+            <div class="col-md-6">
+                <div class="input-group mb-2">
+                    <span class="input-group-text"><label asp-for="AlbumTitle" class="control-label "></label></span>
+                    <input type="text" class="form-control" value="@Model.AlbumTitle" disabled>
+                </div>
+                <div class="input-group mb-2">
+                    <span class="input-group-text"><label @*asp-for="AlbumArtist"*@ class="control-label ">Artist(s)</label></span>
+                    <input type="text" class="form-control" value="@Model.ArtistName" disabled>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<h4>Tracklist</h4>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">
+                #
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(x => x.Songs[0].SongTitle)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(x => x.Songs[0].SongArtists)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(x => x.Songs[0].Remixer)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(x => x.Songs[0].Genre)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(x => x.Songs[0].EditSongLength)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(x => x.Songs[0].ExtendedSongLength)
+            </th>
+            <th scope="col">
+                &nbsp;
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{int i = 1;
+            @foreach (var song in Model.Songs)
+            {
+                <tr>
+                    <td class="col">
+                        @i
+                    </td>
+                    <td class="col">
+                        <a asp-controller="Song"
+                           asp-action="Details"
+                           asp-route-id="@song.ID">
+                            @song.SongTitle
+                        </a>
+                        @if (song.Remixer != null)
+                        {<span>
+                                <a asp-controller="Song"
+                                   asp-action="Details"
+                                   asp-route-id="@song.ID">
+                                    (@song.Remixer.Name Remix)
+                                </a>
+                            </span>
+                        }
+                    </td>
+                    <td class="col">
+                        @if (Model.SongArtists != null)
+                        {
+                            foreach (var songArtist in Model.SongArtists.Where(x => x.SongID == song.ID))
+                            {
+                                <a asp-controller="Artist"
+                                   asp-action="Details"
+                                   asp-route-id="@songArtist.ArtistID">
+                                    @songArtist.Artist.Name,
+                                </a>
+                            }
+                        }
+                        else
+                        {
+                            <span>error</span>
+                        }
+                    </td>
+                    <td scope="col">
+                        @if (song.Remixer != null)
+                        {
+                            <a asp-controller="Artist"
+                               asp-action="Details"
+                               asp-route-id="@song.RemixerID">
+                                @song.Remixer.Name
+                            </a>
+                        }
+                    </td>
+                    <td scope="col">
+                        @song.Genre.Name
+                    </td>
+                    <td class="col">
+                        @song.EditSongLength
+                    </td>
+                    <td class="col">
+                        @song.ExtendedSongLength
+                    </td>
+                    <td class="col">
+                        &nbsp;
+                    </td>
+                </tr>
+                i++;
+            }
+        }
+    </tbody>
+</table>

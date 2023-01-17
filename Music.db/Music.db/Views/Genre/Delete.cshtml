@@ -1,0 +1,22 @@
+﻿@model Music.db.ViewModels.DeleteGenreViewModel
+
+@{
+    ViewData["Title"] = "Delete Genre";
+}
+
+<div class="row pt-5">
+    <h2>Delete Genre</h2>
+
+    <hr />
+
+    <h4>Are you sure you want to delete @Model.Name?</h4>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="GenreID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+        <div class="row py-3">
+            <span asp-validation-for="Error" class="text-danger"></span>
+        </div>
+    </form>
+</div>

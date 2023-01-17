@@ -1,0 +1,39 @@
+﻿@model Music.db.ViewModels.SongListViewModel
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="row pt-5">
+    <div class="d-grid align-items-center justify-content-center">
+        <div class="row justify-content-center">
+            <div class="col-md text-center">
+                <div class="row align-items-center">
+                    <div class="col-md">
+                        <i class="bi bi-boombox" id="homepage-logo"></i>
+                    </div>
+                    <div class="col-md">
+                        <h1 id="homepage-title">Music.db</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col text-center">
+                <h4>
+                    <strong>Search through the database! <br> Want to make a collection? Sign Up!</strong>
+                </h4>
+            </div>
+        </div>
+        <div class="row justify-content-center m-3">
+            <div class="col">
+                <form asp-controller="Song" asp-action="Search" method="get">
+                    <div class="d-grid gap-2">
+                        <input class="form-control me-2 text-center" placeholder="Search" aria-label="Search" asp-for="SongSearch">
+                        <button class="btn btn-warning" type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

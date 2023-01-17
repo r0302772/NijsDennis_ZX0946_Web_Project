@@ -1,0 +1,37 @@
+﻿@model Music.db.ViewModels.UserDetailsViewModel
+
+@{
+    ViewData["Title"] = "User Details";
+}
+
+<div class="row pt-5">
+    <form class="row">
+        <div class="col-md-6">
+            <div class="input-group mb-2">
+                <span class="input-group-text"><label asp-for="UserID"></label></span>
+                <input type="text" class="form-control" value="@Model.UserID" disabled>
+            </div>
+            <div class="input-group mb-2">
+                <span class="input-group-text"><label asp-for="UserName"></label></span>
+                <input type="text" class="form-control" value="@Model.UserName" disabled>
+            </div>
+            <div class="input-group mb-2">
+                <span class="input-group-text"><label asp-for="Firstname"></label></span>
+                <input type="text" class="form-control" value="@Model.Firstname" disabled>
+            </div>
+            <div class="input-group mb-2">
+                <span class="input-group-text"><label asp-for="Lastname"></label></span>
+                <input type="text" class="form-control" value="@Model.Lastname" disabled>
+            </div>
+            @*<div class="input-group mb-2">
+                <span class="input-group-text">
+                    <label asp-for="RoleID" class="control-label"></label>
+                </span>
+                <input type="text" class="form-control" value="@Model.Role.Name" disabled>
+                <select asp-for="RoleID" asp-items="Model.Roles" class="form-control" disabled></select>
+            </div>*@
+        </div>
+    </form>
+</div>
+
+<a asp-controller="User" asp-action="Index" value="" class="btn btn-primary m-1">Back to list</a>

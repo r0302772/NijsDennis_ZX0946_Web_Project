@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col-lg-2">
+        <h2>Create</h2>
+        <hr>
+        <div class="d-flex flex-column nav-pills">
+            <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <button class="nav-link link-dark active" id="v-pills-song-tab" data-bs-toggle="pill" data-bs-target="#v-pills-song" type="button" role="tab" aria-controls="v-pills-song" aria-selected="true">Song</button>
+                <button class="nav-link link-dark" id="v-pills-artist-tab" data-bs-toggle="pill" data-bs-target="#v-pills-artist" type="button" role="tab" aria-controls="v-pills-artist" aria-selected="false">Artist</button>
+                <button class="nav-link link-dark" id="v-pills-album-tab" data-bs-toggle="pill" data-bs-target="#v-pills-album" type="button" role="tab" aria-controls="v-pills-album" aria-selected="false">Album</button>
+                <button class="nav-link link-dark" id="v-pills-genre-tab" data-bs-toggle="pill" data-bs-target="#v-pills-genre" type="button" role="tab" aria-controls="v-pills-genre" aria-selected="false">Genre</button>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="col-lg-10">
+        <div class="tab-content" id="v-pills-tabContent">
+            <div class="tab-pane fade show active" id="v-pills-song" role="tabpanel" aria-labelledby="v-pills-song-tab"><partial name="~/Views/Song/Create.cshtml" /></div>
+            <div class="tab-pane fade" id="v-pills-artist" role="tabpanel" aria-labelledby="v-pills-artist-tab"><partial name="~/Views/Artist/Create.cshtml" /></div>
+            <div class="tab-pane fade" id="v-pills-album" role="tabpanel" aria-labelledby="v-pills-album-tab"><partial name="~/Views/Album/Create.cshtml" /></div>
+            <div class="tab-pane fade" id="v-pills-genre" role="tabpanel" aria-labelledby="v-pills-genre-tab"><partial name="~/Views/Genre/Create.cshtml" /></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

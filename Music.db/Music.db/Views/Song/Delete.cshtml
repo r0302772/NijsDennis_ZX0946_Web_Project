@@ -1,0 +1,19 @@
+﻿@model Music.db.ViewModels.DeleteSongViewModel
+
+@{
+    ViewData["Title"] = "Delete Song";
+}
+
+<div class="row pt-5">
+    <h2>Delete Song</h2>
+
+    <hr />
+
+    <h4>Are you sure you want to delete @Model.SongTitle @*-  @Model.SongArtist*@?</h4>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="SongID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

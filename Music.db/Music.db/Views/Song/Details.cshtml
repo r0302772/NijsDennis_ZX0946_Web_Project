@@ -1,0 +1,102 @@
+﻿@model Music.db.ViewModels.SongDetailsViewModel
+
+@{
+    ViewData["Title"] = "Song Details";
+}
+
+<!-- Selected Song Details -->
+<div class="row m-3 pt-5">
+    <!-- Song Cover -->
+    <div class="col-md-3 mb-2">
+        @*Cover hier*@
+        @*<img src="@Url.Content("~/img/" + (Model.SongArtist.Replace(", ", " ").Replace(" ", "_") + "-" + Model.SongTitle.Replace(" ", "_")).ToLower() + ".jpg")" alt="" style="width: 100%;">*@
+
+    </div>
+    <!-- Song Details -->
+    <div class="col-md-9">
+        <form class="row">
+            <!-- Left Column -->
+            <div class="col-md-6">
+                <div class="input-group mb-2">
+                    <span class="input-group-text"><label asp-for="SongTitle"></label></span>
+                    @if (Model.Remixer != null)
+                    {
+                        <input type="text" class="form-control" value="@Model.SongTitle (@Model.Remixer.Name Remix)" disabled>
+                    }
+                    else
+                    {
+                        <input type="text" class="form-control" value="@Model.SongTitle" disabled>
+
+                    }
+                </div>
+                <div class="input-group mb-2">
+                    <span class="input-group-text"><label asp-for="SongArtists"></label></span>
+                    @if (Model.SongArtists.Count >= 1)
+                    {
+                        string value = "";
+
+                        @foreach (var songArtist in Model.SongArtists)
+                        {
+                            value += $"{@songArtist.Artist.Name}, ";
+                        }
+                        <input type="text" class="form-control" value="@value" disabled>
+                    }
+                    else
+                    {
+                        <input type="text" class="form-control" value="error" disabled>
+                    }
+
+                </div>
+                <div class="input-group mb-2">
+                    <span class="input-group-text"><label asp-for="RemixerID"></label></span>
+                    @if (Model.Remixer != null)
+                    {
+                        <input type="text" class="form-control" value="@Model.Remixer.Name" disabled>
+                    }
+                    else
+                    {
+                        <input type="text" class="form-control" value="Original version." disabled>
+                    }
+                </div>
+                @if (Model.Album != null)
+                {
+                    <div class="input-group mb-2">
+                        <span class="input-group-text"><label asp-for="AlbumID"></label></span>
+                        <input type="text" class="form-control" value="@Model.Album.AlbumTitle" disabled>
+
+                    </div>
+                }
+                <div class="input-group mb-2">
+                    <span class="input-group-text"><label asp-for="GenreID"></label></span>
+                    <input type="text" class="form-control" value="@Model.Genre.Name" disabled>
+                </div>
+                <div class="input-group mb-2">
+                    <span class="input-group-text"><label asp-for="ReleaseDate"></label></span>
+                    <input type="text" class="form-control" value="@Model.ReleaseDate.ToString("d")" disabled>
+                </div>
+            </div>
+            <!-- Right Column -->
+            <div class="col-md-6">
+                <div class="input-group mb-2">
+                    <span class="input-group-text"><label asp-for="Key"></label></span>
+                    <input type="text" class="form-control" value="@Model.Key" disabled>
+                </div>
+                <div class="input-group mb-2">
+                    <span class="input-group-text"><label asp-for="BPM"></label></span>
+                    <input type="text" class="form-control" value="@Model.BPM" disabled>
+                </div>
+                <div class="row">
+                    <h6 class="text-center mb-2">Length</h6>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text"><label asp-for="EditSongLength"></label></span>
+                        <input type="text" class="form-control" value="@Model.EditSongLength" disabled>
+                    </div>
+                    <div class="input-group mb-2">
+                        <span class="input-group-text"><label asp-for="ExtendedSongLength"></label></span>
+                        <input type="text" class="form-control" value="@Model.ExtendedSongLength" disabled>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

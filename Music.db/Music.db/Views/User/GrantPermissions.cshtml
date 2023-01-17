@@ -1,0 +1,33 @@
+﻿@model Music.db.ViewModels.GrantPermissionsViewModel
+
+@{
+    ViewData["Title"] = "Assign Role";
+}
+
+<div class="row pt-5">
+    <form asp-action="GrantPermissions" asp-method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row pb-1">
+            <div class="col-md-6">
+                <div class="input-group mb-2">
+                    <span class="input-group-text">
+                        <label asp-for="UserID" class="control-label"></label>
+                    </span>
+                    <select asp-for="UserID" asp-items="Model.Users" class="form-control"></select>
+                </div>
+                <div class="input-group mb-2">
+                    <span class="input-group-text">
+                        <label asp-for="RoleID" class="control-label"></label>
+                    </span>
+                    <select asp-for="RoleID" asp-items="Model.Roles" class="form-control"></select>
+                </div>
+            </div>
+        </div>
+        <div class="row py-1">
+            <div class="col-md-6">
+                <input type="submit" value="Assign role" class="btn btn-primary" />
+                <a asp-controller="User" asp-action="Index" value="" class="btn btn-danger m-1">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>

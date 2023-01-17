@@ -1,0 +1,108 @@
+﻿@model Music.db.ViewModels.CreateSongViewModel
+
+@{
+    ViewData["Title"] = "Create Song";
+}
+
+<div class="row">
+    <form asp-action="create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        @*<label asp-for="Title" class="control-label "></label>
+        <input asp-for="Title" type="text" class="form-control " />
+        <span asp-validation-for="Title " class="text-danger"></span>*@
+        <div class="input-group mb-2">
+            <span class="input-group-text"><label asp-for="SongTitle" class="control-label "></label></span>
+            <input asp-for="SongTitle" class="form-control">
+        </div>
+        <div class="pb-2">
+            <span asp-validation-for="SongTitle " class="text-danger"></span>
+        </div>
+
+        @*<label asp-for="Artist" class="control-label"></label>
+        <input asp-for="Artist" class="form-control" />
+        <span asp-validation-for="Artist" class="text-danger"></span>*@
+        @*<div class="input-group mb-2">
+            <span class="input-group-text"><label asp-for="SongArtist" class="control-label "></label></span>
+            <input asp-for="SongArtist" class="form-control">
+        </div>
+        <div class="pb-2">
+            <span asp-validation-for="SongArtist " class="text-danger"></span>
+        </div>*@
+
+        @*<label asp-for="Remixers" class="control-label"></label>
+        <input asp-for="Remixers" class="form-control" />
+        <span asp-validation-for="Remixers" class="text-danger"></span>*@
+        @*<div class="input-group mb-2">
+            <span class="input-group-text"><label asp-for="Remixers" class="control-label "></label></span>
+            <input asp-for="Remixers" class="form-control">
+        </div>
+        <div class="pb-2">
+            <span asp-validation-for="Remixers " class="text-danger"></span>
+        </div>*@
+
+        @*<label asp-for="Genre" class="control-label"></label>
+        <input asp-for="Genre" class="form-control" />
+        <span asp-validation-for="Genre" class="text-danger"></span>*@
+        @*<div class="input-group mb-2">
+            <span class="input-group-text"><label asp-for="SongGenre" class="control-label "></label></span>
+            <input asp-for="SongGenre" class="form-control">
+        </div>
+        <div class="pb-2">
+            <span asp-validation-for="SongGenre " class="text-danger"></span>
+        </div>*@
+
+        @*<label asp-for="BPM" class="control-label"></label>
+        <input asp-for="BPM" class="form-control" />
+        <span asp-validation-for="BPM" class="text-danger"></span>*@
+        @*<div class="input-group mb-2">
+            <span class="input-group-text"><label asp-for="BPM" class="control-label "></label></span>
+            <input asp-for="BPM" class="form-control">
+            <span asp-validation-for="BPM " class="text-danger"></span>
+        </div>*@
+
+        @*<label asp-for="Key" class="control-label"></label>
+        <input asp-for="Key" class="form-control" />
+        <span asp-validation-for="Key" class="text-danger"></span>*@
+        @*<div class="input-group mb-2">
+            <span class="input-group-text"><label asp-for="Key" class="control-label "></label></span>
+            <input asp-for="Key" class="form-control">
+            <span asp-validation-for="Key " class="text-danger"></span>
+        </div>*@
+
+    <div class="row pb-1">
+        <h6 class="text-center pb-1">Length</h6>
+        @*<label asp-for="EditSongLength" class="control-label"></label>
+        <input asp-for="EditSongLength" class="form-control" />
+        <span asp-validation-for="EditSongLength" class="text-danger"></span>*@
+        <div class="input-group mb-2">
+            <span class="input-group-text"><label asp-for="EditSongLength" class="control-label "></label></span>
+            <input asp-for="EditSongLength" class="form-control">
+        </div>
+        <div class="pb-2">
+            <span asp-validation-for="EditSongLength " class="text-danger"></span>
+        </div>
+
+        @*<label asp-for="ExtendedSongLength" class="control-label"></label>
+        <input asp-for="ExtendedSongLength" class="form-control" />
+        <span asp-validation-for="ExtendedSongLength" class="text-danger"></span>*@
+        <div class="input-group mb-2">
+            <span class="input-group-text"><label asp-for="ExtendedSongLength" class="control-label "></label></span>
+            <input asp-for="ExtendedSongLength" class="form-control">
+        </div>
+        <div class="pb-2">
+            <span asp-validation-for="ExtendedSongLength " class="text-danger"></span>
+        </div>
+    </div>
+
+        <div class="row py-1">
+            <div class="col-md-6">
+                <input type="submit" value="Confirm" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

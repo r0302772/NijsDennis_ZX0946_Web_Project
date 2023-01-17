@@ -1,0 +1,92 @@
+﻿@model Music.db.ViewModels.UserListViewModel
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+<div class="row pt-5">
+    <h2 class="text-center">Users</h2>
+    <div class="row">
+        <div class="col">
+            <form asp-controller="User" asp-action="Search" method="get">
+                <div class="form-actions no-color">
+                    <p>
+                        Search user:
+                        <input asp-for="UserSearch">
+                        <input type="submit" value="Search" class="btn btn-default" />
+                        <a asp-controller="User" asp-action="Index">Back to list</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+        <div class="col text-end">
+            <a class="btn btn-primary" asp-controller="User" asp-action="GrantPermissions">Assign Roles</a>
+        </div>
+    </div>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th scope="col">
+                    Username
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(s => s.Users[0].Firstname)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(s => s.Users[0].Lastname)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(s => s.Users[0].Email)
+                </th>
+                <th scope="col">Role
+                    @*@Html.DisplayNameFor(s => s.Users[0].Role)*@
+                </th>
+                <th scope="col">
+                    &nbsp;
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.Users)
+            {
+            <tr>
+                <td class="col">
+                    @user.UserName
+                </td>
+                <td class="col">
+                    @user.Firstname
+                </td>
+                <td class="col">
+                    @user.Lastname
+                </td>
+                <td class="col">
+                    @user.Email
+                </td>
+                <td class="col">
+                    @*@user.Role*@
+                </td>
+                <td class="col">
+                    <a asp-controller="User"
+                       asp-action="Details"
+                       asp-route-id="@user.Id">
+                        Details
+                    </a> |
+                    @*<a asp-controller="User"
+                       asp-action="Edit"
+                       asp-route-id="@user.Id">
+                        Edit
+                    </a> |*@
+                    <a asp-controller="User"
+                       asp-action="Delete"
+                       asp-route-id="@user.Id">
+                        Delete
+                    </a>
+                </td>
+                <th class="col">
+                    &nbsp;
+                </th>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

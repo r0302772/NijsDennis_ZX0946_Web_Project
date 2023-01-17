@@ -1,0 +1,19 @@
+﻿@model Music.db.ViewModels.DeleteUserViewModel
+
+@{
+    ViewData["Title"] = "Delete User";
+}
+
+<div class="row pt-5">
+    <h2>Delete "@Model.UserName"</h2>
+
+    <hr />
+
+    <h4>Are you sure you want to delete @Model.Firstname @Model.Lastname?</h4>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="UserID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

@@ -1,0 +1,36 @@
+﻿@model Music.db.ViewModels.EditGenreViewModel
+
+@{
+    ViewData["Title"] = "Edit Genre";
+}
+
+<div class="row pt-5">
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="GenreID" />
+        <div class="row pb-1">
+            <div class="col-md-6">
+                @*<label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>*@
+                <div class="input-group mb-2">
+                    <span class="input-group-text"><label asp-for="Name" class="control-label "></label></span>
+                    <input asp-for="Name" class="form-control">
+                </div>
+                <div class="pb-2">
+                    <span asp-validation-for="Name " class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row py-1">
+            <div class="col-md-6">
+                <input type="submit" value="Edit" class="btn btn-primary" />
+                <a asp-controller="Genre" asp-action="Index" value="" class="btn btn-danger m-1">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,121 @@
+﻿@model Music.db.ViewModels.CreateAlbumViewModel
+
+@{
+    ViewData["Title"] = "Create Album";
+}
+
+<div class="row pt-5">
+    <h2>New Album</h2>
+
+    <hr>
+    <div class="row">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row pb-1">
+                @*https://www.webtrickshome.com/forum/how-to-display-uploaded-image-in-html-using-javascript*@
+                <!--<div class="col-md-6">
+                    <div style="width:300px;" class="img-thumbnail text-center align-middle">
+                        <i class="bi bi-image"></i>
+                    </div>
+                    <p class="figure-caption">Upload an image off 300x300</p>
+
+                    <div class="input-group mb-2">
+                        <span class="input-group-text"><label asp-for="AlbumCover" class="control-label "></label></span>
+                        <input type="file" accept="image/*" class="form-control" asp-for="AlbumCover">
+                        <label class="input-group-text" asp-for="AlbumCover">Upload</label>
+                    </div>
+                    <div class="pb-2">
+                        <span asp-validation-for="AlbumCover" class="text-danger"></span>
+                    </div>
+                </div>-->
+                <div class="col-md-6">
+                    <div class="input-group mb-2">
+                        <span class="input-group-text"><label asp-for="AlbumTitle" class="control-label "></label></span>
+                        <input asp-for="AlbumTitle" class="form-control">
+                    </div>
+                    <div class="pb-2">
+                        <span asp-validation-for="AlbumTitle" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            @*<h4>Tracklist</h4>
+
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                #
+                            </th>
+                            <th scope="col">
+                                Title
+                            </th>
+                            <th scope="col">
+                                Artist
+                            </th>
+                            <th scope="col">
+                                Length
+                            </th>
+                            <th scope="col">
+                                &nbsp;
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var song in Model.Songs)
+                            {
+                        <tr>
+                            <td class="col">
+                                1
+                            </td>
+                            <td class="col">
+                                Titel song 1
+                            </td>
+                            <td class="col">
+                                Artist Song 1
+                            </td>
+                            <td class="col">
+                                Lengte van
+                            </td>
+                            <td class="col">
+                                <a asp-controller="Song"
+                                    asp-action="Delete"
+                                    asp-route-id="@song.SongID">
+                                Delete
+                                </a>
+                            </td>
+                            <th class="col">
+                                &nbsp;
+                            </th>
+                        </tr>
+                        }
+                    </tbody>
+                </table>*@
+
+            <div class="row py-1">
+                <div class="col-md-6">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <a asp-controller="Album" asp-action="Index" value="" class="btn btn-danger m-1">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@*<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCreate" aria-controls="offcanvasCreate">
+        Add Song
+    </button>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCreate" aria-labelledby="offcanvasCreateLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasCreateLabel">Add Song</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <partial name="~/Views/Song/CreateOffCanvas.cshtml" />
+        </div>
+    </div>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
